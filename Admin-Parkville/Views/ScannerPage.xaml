@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Admin_Parkville.Views.ScannerPage"
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms">
+    <ContentPage.Content>
+        <ScrollView>
+        <Grid RowDefinitions="0.3*,Auto,0.7*" Margin="10">
+            <Frame Grid.Row="0" Padding="0">
+                <zxing:ZXingScannerView IsScanning="True" OnScanResult="ZXingScannerView_OnScanResult" />
+            </Frame>
+            
+            <Label x:Name="Reservacionlbl" Grid.Row="1"></Label>
+            <Grid Grid.Row="2" ColumnDefinitions="0.5*,0.5*">
+                <Label Text="Numero de reservacion:" FontSize="Medium" Grid.Column="0"/>
+                <Label x:Name="id" Grid.Row="0" Grid.Column="1"/>
+                <Label Text="Fecha de funcion" FontSize="Medium" Grid.Row="1" Grid.Column="0"/>
+                <Label x:Name="Fecha" Grid.Row="1" Grid.Column="1"/>
+                <Label Text="Pelicula" Grid.Row="2" FontSize="Medium" Grid.Column="0"/>
+                <Label x:Name="pelicula" Grid.Row="2" Grid.Column="1"/>
+                <Label Text="Pagado" Grid.Row="3" FontSize="Medium" Grid.Column="0"/>
+                <Label x:Name="pagado" Grid.Row="3" Grid.Column="1"/>
+                <Label Text="Usado?" Grid.Row="4" FontSize="Medium" Grid.Column="0"/>
+                <Label x:Name="usado" Grid.Row="4" Grid.Column="1"/>
+                <Button x:Name="Actualizar" Clicked="Actualizar_Clicked" Grid.Row="5" Text="Actualizar reserva" Grid.ColumnSpan="1"/>
+                <Button x:Name="Limpiar" Clicked="Limpiar_Clicked" Grid.Row="5" Grid.Column="1" Text="Limpiar"  Grid.ColumnSpan="1"/>
+            </Grid>
+        </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

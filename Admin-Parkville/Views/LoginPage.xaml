@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:renders="clr-namespace:Admin_Parkville.Renderers"
+             xmlns:vm="clr-namespace:Admin_Parkville.ViewModels"
+             mc:Ignorable="d"
+             x:Class="Admin_Parkville.Views.LoginPage"
+             BackgroundColor="#263A4F">
+    <ContentPage.BindingContext>
+        <vm:LoginViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Margin="20"
+                     Spacing="15">
+            <Grid ColumnDefinitions="1.5*,*,1.5*">
+                <Image Source="backicon.png" HorizontalOptions="Start" Grid.Column="0" Aspect="AspectFit">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToSignupPage }"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="Iniciar sesion" TextColor="White" VerticalOptions="Start" HorizontalOptions="Center" 
+                       FontSize="Title" Grid.Column="1" />
+            </Grid>
+            <Image Source="loginuser.png" Margin="0,40,0,0" HorizontalOptions="Center" HeightRequest="80" 
+                   WidthRequest="80" />
+            <Label Text="Iniciar sesion" Margin="0,40,0,0" TextColor="#F38914" VerticalOptions="Start"
+                   FontSize="Large" HorizontalOptions="CenterAndExpand" />
+            <renders:BorderlessEntry Placeholder="Email" TextColor="White" PlaceholderColor="White"
+                                     BackgroundColor="#263A4F" Text="{Binding Email}" />
+            <BoxView HeightRequest="1" BackgroundColor="White" Margin="0,-15,0,0" />
+            <renders:BorderlessEntry Placeholder="Password" IsPassword="True" TextColor="White"
+                                     PlaceholderColor="White" BackgroundColor="#263A4F" Text="{Binding Password}" />
+            <BoxView HeightRequest="1" BackgroundColor="White" Margin="0,-15,0,0" />
+            <Image Source="login.png" Margin="0,30,0,0">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding LoginCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
