@@ -29,7 +29,7 @@
                 <Entry Grid.Row="4" TextColor="White"
                                      BackgroundColor="Transparent" Text="{Binding Phonenumber}"/>
             </Frame>
-            <Label Grid.Row="5" Text="Correo electronico" TextColor="White" FontAttributes="Bold" FontSize="Small"></Label>
+            <Label Grid.Row="5" Text="Correo electronicoo" TextColor="White" FontAttributes="Bold" FontSize="Small"></Label>
             <Frame Grid.Row="6" BackgroundColor="Transparent" BorderColor="Black" Padding="0">
                 <Entry Grid.Row="6" TextColor="White" PlaceholderColor="Black" BackgroundColor="Transparent" 
                                      Text="{Binding Email}"/>
