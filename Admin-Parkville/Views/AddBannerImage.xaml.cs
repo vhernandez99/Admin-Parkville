@@ -24,7 +24,7 @@ public partial class AddBannerImage : ContentPage
         InitializeComponent();
         id = bannerImageId;
     }
-
+        //borrar
         private async void ImgSave_Tapped(object sender, EventArgs e)
         {
             var imageArray = FromFile.ToArray(file.GetStream());
