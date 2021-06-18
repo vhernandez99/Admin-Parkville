@@ -44,6 +44,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.5*" />
@@ -57,14 +58,7 @@
                            TextColor="White"
                            Grid.Row="0"
                            Grid.Column="1" />
-                    <Label Text="Tiempo de reservacion"
-                           TextColor="#F38914"
-                           Grid.Row="1"
-                           Grid.Column="0" />
-                    <Label x:Name="LblReservationTime"
-                           TextColor="White"
-                           Grid.Row="1"
-                           Grid.Column="1" />
+                    
                     <Label Text="Nombre de cliente"
                            TextColor="#F38914"
                            Grid.Row="2"
@@ -133,7 +127,33 @@
                            TextColor="White"
                            Grid.Row="9"
                            Grid.Column="1" />
-                    <Button Grid.Row="10" Grid.ColumnSpan="2" Text="Reservacion pagada" BackgroundColor="#00D620" Clicked="Button_Clicked">
+
+                    <Label Text="Pagado?"
+                           TextColor="#F38914"
+                           Grid.Row="10"
+                           Grid.Column="0" />
+
+
+                    <Label x:Name="LblPagado"
+                           TextColor="White"
+                           Grid.Row="10"
+                           Grid.Column="1">
+
+                    </Label>
+
+                    <Label Text="Usado?"
+                           TextColor="#F38914"
+                           Grid.Row="11"
+                           Grid.Column="0" />
+
+
+                    <Label x:Name="LblUsado"
+                           TextColor="White"
+                           Grid.Row="11"
+                           Grid.Column="1">
+
+                    </Label>
+                    <Button Grid.Row="12" Grid.ColumnSpan="2" Text="Reservacion pagada" BackgroundColor="#00D620" Clicked="Button_Clicked">
                     </Button>
                   
                 </Grid>

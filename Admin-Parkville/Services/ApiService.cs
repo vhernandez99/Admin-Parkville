@@ -73,20 +73,7 @@ namespace Admin_Parkville.Services
             return true;
         }
 
-        public static async Task<bool> UpdatePaidTicket(int id, string isPaid)
-        {
-            var reserv = new ReservationDetail
-            {
-                IsPaid = isPaid
-            };
-            var httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
-            var jsonRegister = JsonConvert.SerializeObject(reserv);
-            var content = new StringContent(jsonRegister, Encoding.UTF8, "application/json");
-            var ApiResponse = await httpClient.PutAsync(AppSettings.ApiUrl + "api/Reservations/UpdateIfTicketIsPaid/" + id, content);
-            if (!ApiResponse.IsSuccessStatusCode) return false;
-            return true;
-        }
+        
         public static async Task<List<MovieList>> GetAllMovies(int pageNumber, int pageSize)
         {
             await TokenValidator.CheckTokenValidity();
@@ -108,9 +95,30 @@ namespace Admin_Parkville.Services
         {
             await TokenValidator.CheckTokenValidity();
             var httpClient = new HttpClient();
+            var movie = new MovieList
+            {
+                Status = 0
+            };
+
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
-            var response = await httpClient.DeleteAsync(AppSettings.ApiUrl + "api/movies/DeleteMovie/" + movieId);
+            var jsonRegister = JsonConvert.SerializeObject(movie);
+            var content = new StringContent(jsonRegister, Encoding.UTF8, "application/json");
+            var response = await httpClient.PutAsync(AppSettings.ApiUrl + "api/movies/DeleteMovie/" + movieId,content);
             if (!response.IsSuccessStatusCode) return false;
+            return true;
+        }
+        public static async Task<bool> UpdatePaidTicket(int id, string isPaid)
+        {
+            var reserv = new ReservationDetail
+            {
+                IsPaid = isPaid
+            };
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
+            var jsonRegister = JsonConvert.SerializeObject(reserv);
+            var content = new StringContent(jsonRegister, Encoding.UTF8, "application/json");
+            var ApiResponse = await httpClient.PutAsync(AppSettings.ApiUrl + "api/Reservations/UpdateIfTicketIsPaid/" + id, content);
+            if (!ApiResponse.IsSuccessStatusCode) return false;
             return true;
         }
         public static async Task<List<Reservation>> GetAllReservations ()

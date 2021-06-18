@@ -24,6 +24,7 @@ namespace Admin_Parkville.Views
         }
         private async void TapPickImage_Tapped(object sender, EventArgs e)
         {
+
             await CrossMedia.Current.Initialize();
 
             if (!CrossMedia.Current.IsPickPhotoSupported)
@@ -47,31 +48,34 @@ namespace Admin_Parkville.Views
 
         private async void ImgSave_Tapped(object sender, EventArgs e)
         {
-            var imageArray=FromFile.ToArray(file.GetStream()); 
-            var movie = new Movie()
+
+            try
             {
-                Name=EntMovieName.Text,
-                Description=EdtDescription.Text,
-                Language=EntLanguage.Text,
-                Duration=EntDuration.Text,
-                PlayingDate=EntPlayingDate.Date.ToString(),
-                PlayingTime=EntPlayingTime.Text,
-                TicketPrice=Convert.ToInt32(EntTicketPrice.Text),
-                Rating=Convert.ToDouble(EntRating.Text),
-                Genre=EntGenre.Text,
-                TrailorUrl=EntTrailorUrl.Text,
-                ImageArray= imageArray
-            };
-            var response=await ApiService.AddMovie(file, movie);
-            if (!response)
+                var imageArray = FromFile.ToArray(file.GetStream());
+                var movie = new Movie()
+                {
+                    Name = EntMovieName.Text,
+                    Description = EdtDescription.Text,
+                    Language = EntLanguage.Text,
+                    Duration = EntDuration.Text,
+                    PlayingDate = EntPlayingDate.Date.ToString(),
+                    PlayingTime = EntPlayingTime.Text,
+                    TicketPrice = Convert.ToInt32(EntTicketPrice.Text),
+                    Rating = Convert.ToDouble(EntRating.Text),
+                    Genre = EntGenre.Text,
+                    TrailorUrl = EntTrailorUrl.Text,
+                    ImageArray = imageArray
+                };
+                var response = await ApiService.AddMovie(file, movie);
+                await DisplayAlert("Alerta", "Pelicula agregada correctamente", "Aceptar");
+            }
+            catch (Exception)
             {
                 await DisplayAlert("Oops", "Hubo un error al subir la pelicula", "Cancel");
+                return;
             }
-            else
-            {
-                await DisplayAlert("Alerta", "Pelicula agregada correctamente", "Aceptar");
-                await Navigation.PopModalAsync();
-            }
+            
+            
         }
 
         private void ImgBack_Tapped(object sender, EventArgs e)

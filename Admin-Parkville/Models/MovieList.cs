@@ -14,5 +14,6 @@ namespace Admin_Parkville.Models
         public string Genre { get; set; }
         public string ImageUrl { get; set; }
         public string FullImageUrl => AppSettings.ApiUrl + ImageUrl;
+        public int Status { get; set; }
     }
 }

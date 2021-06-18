@@ -26,7 +26,7 @@ namespace Admin_Parkville.Views
             var response=await ApiService.GetReservationDetail(reservationId);
             reservId = response.Id;
             LblReservationId.Text = response.Id.ToString();
-            LblReservationTime.Text = response.ReservationTime.ToString("MMMM d, yyyy HH:mm");
+            //LblReservationTime.Text = response.ReservationTime.ToString("MMMM d, yyyy HH:mm");
             LblCustomerName.Text = response.CustomerName;
             LblMovieName.Text = response.MovieName;
             LblEmail.Text = response.Email;
@@ -35,6 +35,8 @@ namespace Admin_Parkville.Views
             LblPlayingDate.Text = response.PlayingDate.ToString("MMMM d, yyyy");
             LblPlayingTime.Text = response.PlayingTime.ToString("HH:mm");
             LblPhone.Text = response.Phone;
+            LblPagado.Text = response.IsPaid;
+            LblUsado.Text = response.IsUsed;
         }
         private void ImgBack_Tapped(object sender, EventArgs e)
         {

@@ -17,7 +17,7 @@ namespace Admin_Parkville.Models
         public string Genre { get; set; }
         public string TrailorUrl { get; set; }
         public byte[] ImageArray { get; set; }
-
+        
 
     }
 }

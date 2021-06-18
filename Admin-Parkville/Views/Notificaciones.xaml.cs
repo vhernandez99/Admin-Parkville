@@ -25,10 +25,26 @@ public partial class Notificaciones : ContentPage
 
         private async void GetTokens()
         {
-            var title = TituloEntry.Text.ToString();
-            var body = CuerpoEntry.Text.ToString();
-            var data = new { action = "Play", userId = 5 };
-            var sendPush = await ApiService.SendPushNotification(title,body,data);
+            bool result = await DisplayAlert("Alerta", "Realmente desea enviar una notificacion a todos los usuarios?", "Si", "No");
+            if (result)
+            {
+                try
+                {
+                    var title = TituloEntry.Text.ToString();
+                    var body = CuerpoEntry.Text.ToString();
+                    var data = new { action = "Play", userId = 5 };
+                    var sendPush = await ApiService.SendPushNotification(title, body, data);
+                    await DisplayAlert("Alerta", "Notificacion enviada correctamente", "Aceptar");
+                }
+                catch (Exception)
+                {
+                    await DisplayAlert("Alerta", "Error al mandar notificacion, favor de intentar nuevamente", "Aceptar");
+                    return;
+                }
+            }
+            
+            
+
             //usersTokens.ToArray();
 
         }

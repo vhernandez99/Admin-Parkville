@@ -35,6 +35,9 @@ namespace Admin_Parkville.Views
             ((CollectionView)sender).SelectedItem = null;
         }
 
-       
+        private void ImgBack_Tapped(object sender, System.EventArgs e)
+        {
+            Navigation.PopModalAsync();
+        }
     }
 }

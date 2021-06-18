@@ -47,7 +47,7 @@
                                                    TextColor="Black"
                                                    PlaceholderColor="#131C25" />
                     </Frame>
-                    <Label Text="Duracion con este formato: 2h 25 min, 1h 30 min" TextColor="White" FontSize="Medium"></Label>
+                    <Label Text="Duracion con este formato: 2h 25 min" TextColor="White" FontSize="Medium"></Label>
                     <Frame Padding="2"
                            HasShadow="False">
                         <renderers:BorderlessEntry x:Name="EntDuration"
@@ -57,12 +57,12 @@
                     </Frame>
                     <Frame Padding="2"
                            HasShadow="False">
-                        <DatePicker x:Name="EntPlayingDate"
+                        <DatePicker x:Name="EntPlayingDate" TextColor="Black"  
                                                    
-                                                   TextColor="Black" />
+                                                   />
                                                    
                     </Frame>
-                    <Label Text="Hora de funcion con este formato : 5:30 PM   6:30 PM " TextColor="White" FontSize="Medium"></Label>
+                    <Label Text="Hora de funcion con este formato :    6:30 PM " TextColor="White" FontSize="Medium"></Label>
                     <Frame Padding="2"
                            HasShadow="False">
                         <renderers:BorderlessEntry x:Name="EntPlayingTime"
