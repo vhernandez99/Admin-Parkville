@@ -40,6 +40,7 @@ public partial class Notificaciones : ContentPage
                 {
                     await DisplayAlert("Alerta", "Error al mandar notificacion, favor de intentar nuevamente", "Aceptar");
                     return;
+                    //borrar
                 }
             }
             
