@@ -6,6 +6,6 @@ namespace Admin_Parkville
 {
     public static class AppSettings
     {
-        public static string ApiUrl = "https://www.vhernandezapps.info/";
+        public static string ApiUrl = "https://www.parkvilleautocinemas.xyz";
     }
 }

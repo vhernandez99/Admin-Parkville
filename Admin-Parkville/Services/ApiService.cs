@@ -18,14 +18,14 @@ namespace Admin_Parkville.Services
     {
         private static Uri FireBasePushNotificationsURL = new Uri("https://fcm.googleapis.com/fcm/send");
         private static string ServerKey = "AAAAHQm_kQ4:APA91bHplt9TGV6L-gtOrCDiouB-NdRBlSprEgiGn5XX7TjVmBevEPYAlSXHPWwFyAOf1AbIJnP_w-wfDZqSaJQxrEJ0rX3p1w9nK0GxEFVk_EaHtuLCQTS9gXn7RvFD4I3KNdInaxsZ";
-        public static async Task<bool> RegisterUser(string name, string email, string password,string phoneNumber)
+        public static async Task<bool> RegisterUser(string name, string email, string password, string phoneNumber)
         {
             var register = new Register()
             {
                 Name = name,
                 Email = email,
                 Password = password,
-                PhoneNumber=phoneNumber 
+                PhoneNumber = phoneNumber
             };
             var httpClient = new HttpClient();
             var jsonRegister = JsonConvert.SerializeObject(register);
@@ -34,7 +34,7 @@ namespace Admin_Parkville.Services
             if (!ApiResponse.IsSuccessStatusCode) return false;
             return true;
         }
-        
+
 
         public static async Task<bool> Login(string email, string password)
         {
@@ -60,6 +60,7 @@ namespace Admin_Parkville.Services
 
         public static async Task<bool> UpdateUsedTicket(int id, string isUsed)
         {
+            await TokenValidator.CheckTokenValidity();
             var reserv = new ReservationDetail
             {
                 IsUsed = isUsed
@@ -73,7 +74,7 @@ namespace Admin_Parkville.Services
             return true;
         }
 
-        
+
         public static async Task<List<MovieList>> GetAllMovies(int pageNumber, int pageSize)
         {
             await TokenValidator.CheckTokenValidity();
@@ -85,6 +86,7 @@ namespace Admin_Parkville.Services
 
         public static async Task<List<BannerImage>> GetAllBannerImages()
         {
+            await TokenValidator.CheckTokenValidity();
             var httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
             var response = await httpClient.GetStringAsync(AppSettings.ApiUrl + string.Format("api/movies/AllBannerImages"));
@@ -103,12 +105,13 @@ namespace Admin_Parkville.Services
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
             var jsonRegister = JsonConvert.SerializeObject(movie);
             var content = new StringContent(jsonRegister, Encoding.UTF8, "application/json");
-            var response = await httpClient.PutAsync(AppSettings.ApiUrl + "api/movies/DeleteMovie/" + movieId,content);
+            var response = await httpClient.PutAsync(AppSettings.ApiUrl + "api/movies/DeleteMovie/" + movieId, content);
             if (!response.IsSuccessStatusCode) return false;
             return true;
         }
         public static async Task<bool> UpdatePaidTicket(int id, string isPaid)
         {
+            await TokenValidator.CheckTokenValidity();
             var reserv = new ReservationDetail
             {
                 IsPaid = isPaid
@@ -121,7 +124,7 @@ namespace Admin_Parkville.Services
             if (!ApiResponse.IsSuccessStatusCode) return false;
             return true;
         }
-        public static async Task<List<Reservation>> GetAllReservations ()
+        public static async Task<List<Reservation>> GetAllReservations()
         {
             await TokenValidator.CheckTokenValidity();
             var httpClient = new HttpClient();
@@ -134,13 +137,13 @@ namespace Admin_Parkville.Services
             await TokenValidator.CheckTokenValidity();
             var httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
-            var response = await httpClient.GetStringAsync(AppSettings.ApiUrl+"api/reservations/GetReservationDetail/"+reservationId);
+            var response = await httpClient.GetStringAsync(AppSettings.ApiUrl + "api/reservations/GetReservationDetail/" + reservationId);
             return JsonConvert.DeserializeObject<ReservationDetail>(response);
         }
 
 
-        
-        public static async Task<bool> AddMovie(MediaFile mediaFile,Movie movie)
+
+        public static async Task<bool> AddMovie(MediaFile mediaFile, Movie movie)
         {
             await TokenValidator.CheckTokenValidity();
             var httpClient = new HttpClient();
@@ -170,15 +173,15 @@ namespace Admin_Parkville.Services
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
             var content = new MultipartFormDataContent
             {
-                
+
             };
             content.Add(new StreamContent(new MemoryStream(bannerImage.ImageArray)), "Image", mediaFile.Path);
-            var response = await httpClient.PutAsync(AppSettings.ApiUrl + "api/movies/UpdateImageBanner/"+id, content);
+            var response = await httpClient.PutAsync(AppSettings.ApiUrl + "api/movies/UpdateImageBanner/" + id, content);
             if (!response.IsSuccessStatusCode) return false;
             return true;
         }
 
-        
+
 
 
         public static async Task<bool> AddBannerImage(MediaFile mediaFile, BannerImage bannerImage)
@@ -188,49 +191,50 @@ namespace Admin_Parkville.Services
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
             var content = new MultipartFormDataContent
             {
-                
+
             };
             content.Add(new StreamContent(new MemoryStream(bannerImage.ImageArray)), "Image", mediaFile.Path);
             var response = await httpClient.PostAsync(AppSettings.ApiUrl + "api/movies/AddMovie", content);
             if (!response.IsSuccessStatusCode) return false;
             return true;
         }
-        
+
         //1
         public static async Task<List<TokensFirebase>> GetAllTokens()
         {
             await TokenValidator.CheckTokenValidity();
             var httpClient = new HttpClient();
             var response = await httpClient.GetStringAsync(AppSettings.ApiUrl + "api/users/GetAllTokens");
-            var des=JsonConvert.DeserializeObject<List<TokensFirebase>>(response);
+            var des = JsonConvert.DeserializeObject<List<TokensFirebase>>(response);
             return des;
 
         }
         public static async Task<bool> SendPushNotification(string title, string body, object data)
         {
+            await TokenValidator.CheckTokenValidity();
             var usersTokens = await ApiService.GetAllTokens();
             var deviceTokens = usersTokens.Select(x => x.Token).ToArray();
             bool sent = false;
-                var messageInformation = new Message()
+            var messageInformation = new Message()
+            {
+                notification = new Notification()
                 {
-                    notification = new Notification()
-                    {
-                        title = title,
-                        body = body
-                    },
-                    data = data,
-                    registration_ids = deviceTokens
-                };
-                string jsonMessage = JsonConvert.SerializeObject(messageInformation);
-                var request = new HttpRequestMessage(HttpMethod.Post, FireBasePushNotificationsURL);
-                request.Headers.TryAddWithoutValidation("Authorization", "key=" + ServerKey);
-                request.Content = new StringContent(jsonMessage, Encoding.UTF8, "application/json");
-                HttpResponseMessage result;
-                using (var client = new HttpClient())
-                {
-                    result = await client.SendAsync(request);
-                    sent = sent && result.IsSuccessStatusCode;
-                }
+                    title = title,
+                    body = body
+                },
+                data = data,
+                registration_ids = deviceTokens
+            };
+            string jsonMessage = JsonConvert.SerializeObject(messageInformation);
+            var request = new HttpRequestMessage(HttpMethod.Post, FireBasePushNotificationsURL);
+            request.Headers.TryAddWithoutValidation("Authorization", "key=" + ServerKey);
+            request.Content = new StringContent(jsonMessage, Encoding.UTF8, "application/json");
+            HttpResponseMessage result;
+            using (var client = new HttpClient())
+            {
+                result = await client.SendAsync(request);
+                sent = sent && result.IsSuccessStatusCode;
+            }
             return sent;
         }
     }
@@ -238,15 +242,15 @@ namespace Admin_Parkville.Services
     {
         public static async Task CheckTokenValidity()
         {
-            var expirationTime=Preferences.Get("tokenExpiration", 0);
+            var expirationTime = Preferences.Get("tokenExpiration", 0);
             Preferences.Set("currentTime", UnixTime.GetCurrentTime());
             var currentTime = Preferences.Get("currentTime", 0);
             if (expirationTime < currentTime)
             {
-                var email=Preferences.Get("email", string.Empty);
+                var email = Preferences.Get("email", string.Empty);
                 var password = Preferences.Get("password", string.Empty);
-                await ApiService.Login(email,password);
+                await ApiService.Login(email, password);
             }
         }
     }
-}   
+}
