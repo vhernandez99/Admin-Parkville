@@ -15,7 +15,7 @@ namespace Admin_Parkville
             var accessToken = Preferences.Get("accessToken", string.Empty);
             if (string.IsNullOrEmpty(accessToken))
             {
-                MainPage = new SignupPage();
+                MainPage = new LoginPage();
             }
             else
             {

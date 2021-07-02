@@ -59,7 +59,15 @@ namespace Admin_Parkville.Views
                     Language = EntLanguage.Text,
                     Duration = EntDuration.Text,
                     PlayingDate = EntPlayingDate.Date.ToString(),
+                    PlayingDate2 = EntPlayingDate2.Date.ToString(),
+                    PlayingDate3 = EntPlayingDate3.Date.ToString(),
+                    PlayingDate4 = EntPlayingDate4.Date.ToString(),
+                    PlayingDate5 = EntPlayingDate5.Date.ToString(),
                     PlayingTime = EntPlayingTime.Text,
+                    PlayingTime2 = EntPlayingTime2.Text,
+                    PlayingTime3 = EntPlayingTime3.Text,
+                    PlayingTime4 = EntPlayingTime4.Text,
+                    PlayingTime5 = EntPlayingTime5.Text,
                     TicketPrice = Convert.ToInt32(EntTicketPrice.Text),
                     Rating = Convert.ToDouble(EntRating.Text),
                     Genre = EntGenre.Text,
@@ -81,6 +89,142 @@ namespace Admin_Parkville.Views
         private void ImgBack_Tapped(object sender, EventArgs e)
         {
             Navigation.PopModalAsync();
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                var result = await this.DisplayAlert("Alerta", "Realmente desea agregar otra funcion?", "Si", "No");
+                if (result)
+                {
+                    EntPlayingDate2.IsEnabled = true;
+                }
+                else
+                {
+                    return;
+                }
+            });
+            
+        }
+
+        private void Button_Clicked_1(object sender, EventArgs e)
+        {
+            
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                var result = await this.DisplayAlert("Alerta", "Realmente desea agregar otra funcion?", "Si", "No");
+                if (result)
+                {
+                    EntPlayingTime2.IsEnabled = true;
+                }
+                else
+                {
+                    return;
+                }
+            });
+        }
+
+        private void Button_Clicked_2(object sender, EventArgs e)
+        {
+            
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                var result = await this.DisplayAlert("Alerta", "Realmente desea agregar otra funcion?", "Si", "No");
+                if (result)
+                {
+                    EntPlayingDate3.IsEnabled = true;
+                }
+                else
+                {
+                    return;
+                }
+            });
+        }
+
+        private void Button_Clicked_3(object sender, EventArgs e)
+        {
+            
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                var result = await this.DisplayAlert("Alerta", "Realmente desea agregar otra funcion?", "Si", "No");
+                if (result)
+                {
+                    EntPlayingTime3.IsEnabled = true;
+                }
+                else
+                {
+                    return;
+                }
+            });
+        }
+
+        private void Button_Clicked_4(object sender, EventArgs e)
+        {
+            
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                var result = await this.DisplayAlert("Alerta", "Realmente desea agregar otra funcion?", "Si", "No");
+                if (result)
+                {
+                    EntPlayingDate4.IsEnabled = true;
+                }
+                else
+                {
+                    return;
+                }
+            });
+        }
+
+        private void Button_Clicked_5(object sender, EventArgs e)
+        {
+           
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                var result = await this.DisplayAlert("Alerta", "Realmente desea agregar otra funcion?", "Si", "No");
+                if (result)
+                {
+                    EntPlayingTime4.IsEnabled = true;
+                }
+                else
+                {
+                    return;
+                }
+            });
+        }
+
+        private void Button_Clicked_6(object sender, EventArgs e)
+        {
+            
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                var result = await this.DisplayAlert("Alerta", "Realmente desea agregar otra funcion?", "Si", "No");
+                if (result)
+                {
+                    EntPlayingDate5.IsEnabled = true;
+                }
+                else
+                {
+                    return;
+                }
+            });
+        }
+
+        private void Button_Clicked_7(object sender, EventArgs e)
+        {
+            
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                var result = await this.DisplayAlert("Alerta", "Realmente desea agregar otra funcion?", "Si", "No");
+                if (result)
+                {
+                    EntPlayingTime5.IsEnabled = true;
+                }
+                else
+                {
+                    return;
+                }
+            });
         }
     }
 }

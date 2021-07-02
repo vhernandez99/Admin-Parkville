@@ -47,29 +47,9 @@
                                                    TextColor="Black"
                                                    PlaceholderColor="#131C25" />
                     </Frame>
-                    <Label Text="Duracion con este formato: 2h 25 min" TextColor="White" FontSize="Medium"></Label>
-                    <Frame Padding="2"
-                           HasShadow="False">
-                        <renderers:BorderlessEntry x:Name="EntDuration"
-                                                   Placeholder="Duracion"
-                                                   TextColor="Black"
-                                                   PlaceholderColor="#131C25" />
-                    </Frame>
-                    <Frame Padding="2"
-                           HasShadow="False">
-                        <DatePicker x:Name="EntPlayingDate" TextColor="Black"  
-                                                   
-                                                   />
-                                                   
-                    </Frame>
-                    <Label Text="Hora de funcion con este formato :    6:30 PM " TextColor="White" FontSize="Medium"></Label>
-                    <Frame Padding="2"
-                           HasShadow="False">
-                        <renderers:BorderlessEntry x:Name="EntPlayingTime"
-                                                   Placeholder="Hora de funcion"
-                                                   TextColor="Black"
-                                                   PlaceholderColor="#131C25" />
-                    </Frame>
+                    
+                    
+                    
                     <Frame Padding="2"
                            HasShadow="False">
                         <renderers:BorderlessEntry x:Name="EntTicketPrice"
@@ -106,6 +86,106 @@
                                 HeightRequest="100"
                                 TextColor="Black"
                                 PlaceholderColor="#131C25" />
+                    </Frame>
+                    <Frame Padding="2"
+                           HasShadow="False">
+                        <renderers:BorderlessEntry x:Name="EntDuration"
+                                                   Placeholder="Duracion 2h 25 min"
+                                                   TextColor="Black"
+                                                   PlaceholderColor="#131C25" />
+                    </Frame>
+                    <Frame Padding="2"
+                           HasShadow="False">
+                        <DatePicker x:Name="EntPlayingDate" TextColor="Black" />
+
+
+
+                    </Frame>
+                    <Frame Padding="2"
+                           HasShadow="False">
+                        <renderers:BorderlessEntry x:Name="EntPlayingTime"
+                                                   Placeholder="Hora de funcion"
+                                                   TextColor="Black"
+                                                   PlaceholderColor="#131C25" />
+                    </Frame>
+                    <Frame Padding="2"
+                           HasShadow="False">
+                        <StackLayout Orientation="Horizontal">
+                            <DatePicker x:Name="EntPlayingDate2" TextColor="Black" Date="0001-01-01 00:00:00.0000000" IsEnabled="False" />
+                            <Button Text="Activar" HorizontalOptions="EndAndExpand" Clicked="Button_Clicked"></Button>
+                        </StackLayout>
+                    </Frame>
+                    
+                    <Frame Padding="2"
+                           HasShadow="False">
+                        <StackLayout Orientation="Horizontal">
+                            <renderers:BorderlessEntry x:Name="EntPlayingTime2"
+                                                   Placeholder="Hora de funcion"
+                                                   TextColor="Black"
+                                                   PlaceholderColor="#131C25"
+                                                   IsEnabled="False"
+                                                   Text="5:30 pm" />
+                            <Button Text="Activar" HorizontalOptions="EndAndExpand" Clicked="Button_Clicked_1"></Button>
+                        </StackLayout>
+                    </Frame>
+                    
+                    <Frame Padding="2"
+                           HasShadow="False">
+                        <StackLayout Orientation="Horizontal">
+                            <DatePicker x:Name="EntPlayingDate3" TextColor="Black" Date="01/01/0001" IsEnabled="False" />
+                            <Button Text="Activar" HorizontalOptions="EndAndExpand" Clicked="Button_Clicked_2"></Button>
+                        </StackLayout>
+                    </Frame>
+                    
+                    <Frame Padding="2"
+                           HasShadow="False">
+                        <StackLayout Orientation="Horizontal">
+                            <renderers:BorderlessEntry x:Name="EntPlayingTime3"
+                                                   Placeholder="Hora de funcion"
+                                                   TextColor="Black"
+                                                   PlaceholderColor="#131C25"
+                                                   IsEnabled="False" Text="5:30 pm"
+/>
+                            <Button Text="Activar" HorizontalOptions="EndAndExpand" Clicked="Button_Clicked_3"></Button>
+                        </StackLayout>
+                        
+                    </Frame>
+                    
+                    <Frame Padding="2"
+                           HasShadow="False">
+                        <StackLayout Orientation="Horizontal">
+                            <DatePicker x:Name="EntPlayingDate4" TextColor="Black" Date="01/01/0001" IsEnabled="False" />
+                            <Button Text="Activar" HorizontalOptions="EndAndExpand" Clicked="Button_Clicked_4"></Button>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Padding="2"
+                           HasShadow="False">
+                        <StackLayout Orientation="Horizontal">
+                            <renderers:BorderlessEntry x:Name="EntPlayingTime4"
+                                                   Placeholder="Hora de funcion"
+                                                   TextColor="Black"
+                                                   PlaceholderColor="#131C25"
+                                                   IsEnabled="False" Text="5:30 pm"/>
+                            <Button Text="Activar" HorizontalOptions="EndAndExpand" Clicked="Button_Clicked_5"></Button>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Padding="2"
+                           HasShadow="False">
+                        <StackLayout Orientation="Horizontal">
+                            <DatePicker x:Name="EntPlayingDate5" TextColor="Black" Date="01/01/0001" IsEnabled="False" />
+                            <Button Text="Activar" HorizontalOptions="EndAndExpand" Clicked="Button_Clicked_6"></Button>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Padding="2"
+                           HasShadow="False">
+                        <StackLayout Orientation="Horizontal">
+                            <renderers:BorderlessEntry x:Name="EntPlayingTime5"
+                                                   Placeholder="Hora de funcion"
+                                                   TextColor="Black"
+                                                   PlaceholderColor="#131C25"
+                                                   IsEnabled="False" Text="5:30 pm"/>
+                            <Button Text="Activar" HorizontalOptions="EndAndExpand" Clicked="Button_Clicked_7"></Button>
+                        </StackLayout>
                     </Frame>
                     <Image HorizontalOptions="End"
                            Aspect="Fill"
