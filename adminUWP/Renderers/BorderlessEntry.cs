@@ -7,6 +7,6 @@ namespace adminUWP.Renderers
 {
     public class BorderlessEntry : Entry
     {
-
+        //
     }
 }
