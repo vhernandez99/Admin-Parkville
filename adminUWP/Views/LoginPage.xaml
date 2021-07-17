@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:renders="clr-namespace:adminUWP.Renderers"
+             xmlns:vm="clr-namespace:adminUWP.ViewModels"
+             mc:Ignorable="d"
+             x:Class="adminUWP.Views.LoginPage"
+             >
+    <ContentPage.BindingContext>
+        <vm:LoginViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,1.5*,0.35*,0.35*,0.35*,*" Margin="10" RowSpacing="15">
+            <Image Grid.Row="1" Source="Logo.png" HorizontalOptions="CenterAndExpand"  Aspect="AspectFit" VerticalOptions="CenterAndExpand"/>
+            <Frame Grid.Row="2" BackgroundColor="WhiteSmoke" Padding="0">
+                <Grid>
+                    <Entry Placeholder="Correo electronico" TextColor="Black" PlaceholderColor="Black" BackgroundColor="Transparent" HorizontalTextAlignment="Center"
+                                     Text="{Binding Email}"/>
+                </Grid>
+            </Frame>
+            <Frame  Grid.Row="3" BackgroundColor="WhiteSmoke" Padding="0">
+                <Grid>
+                    <Entry PlaceholderColor="Black" Placeholder="Contraseña" IsPassword="True" TextColor="Black" BackgroundColor="Transparent" Text="{Binding Password}" HorizontalTextAlignment="Center"/>
+                </Grid>
+            </Frame>
+
+            <Button Grid.Row="4"  Text="Iniciar sesion" Margin="0,0,0,0" Command="{Binding LoginCommand}" 
+                    HorizontalOptions="FillAndExpand" BorderWidth="50" BackgroundColor="#5DBF4E" VerticalOptions="Center"/>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

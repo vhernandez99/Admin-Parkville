@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="adminUWP.Views.HomePage"         
+             BackgroundColor="#263A4F"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid RowDefinitions="0.25*,0.25*,0.25*,0.25*,0.25*" ColumnDefinitions="*">
+                <Button x:Name="BtnMovies" Grid.Row="0" 
+                    TextColor="White"
+                    BackgroundColor="#4d5d6e"
+                    FontSize="Title"
+                    HeightRequest="200"
+                    Text="Peliculas" Clicked="BtnMovies_Clicked"/>
+                <Button x:Name="BtnReservations" Grid.Row="1" 
+                    TextColor="White"
+                    BackgroundColor="#4d5d6e"
+                    FontSize="Title"
+                    HeightRequest="200"
+                    Text="Ver reservaciones" Clicked="BtnReservations_Clicked"/>
+                <Button x:Name="BtnNotificaciones" Grid.Row="2" 
+                    TextColor="White"
+                    BackgroundColor="#4d5d6e"
+                    FontSize="Title"
+                    HeightRequest="200"
+                    Text="Enviar notificaciones" Clicked="BtnNotificaciones_Clicked"/>
+                <Button x:Name="BtnScanner" Grid.Row="3" 
+                    TextColor="White"
+                    BackgroundColor="#4d5d6e"
+                    FontSize="Title"
+                    HeightRequest="200"
+                    Text="Escanear" Clicked="BtnScanner_Clicked"/>
+                <Button x:Name="BtnBannerImages" Grid.Row="4" 
+                    TextColor="White"
+                    BackgroundColor="#4d5d6e"
+                    FontSize="Title"
+                    HeightRequest="200"
+                    Text="Modificar Banner" Clicked="BtnBannerImages_Clicked"/>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
